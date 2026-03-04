@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'config_app_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -33,6 +34,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Tomamos el color primario del tema (#205599 configurado en main)
+    final primaryColor = Theme.of(context).colorScheme.primary;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -44,10 +48,10 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // Icono o Logo de la aplicación
-                const Icon(
+                Icon(
                   Icons.account_circle,
                   size: 100,
-                  color: Colors.deepPurple,
+                  color: primaryColor,
                 ),
                 const SizedBox(height: 32),
                 
@@ -111,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   onPressed: _handleLogin,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
@@ -133,6 +137,22 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
+      // Botón flotante para acceder a la configuración
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const ConfigAppScreen(),
+            ),
+          );
+        },
+        backgroundColor: Theme.of(context).colorScheme.secondary, // Variante clara del color primario
+        foregroundColor: Colors.white,
+        tooltip: 'Configuración',
+        elevation: 4,
+        child: const Icon(Icons.settings),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
