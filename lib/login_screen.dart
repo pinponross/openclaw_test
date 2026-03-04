@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 
                 // Título
                 const Text(
-                  'Bienvenido',
+                  'SuperADMINISTRADOR',
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: _usernameController,
                   decoration: InputDecoration(
                     labelText: 'Usuario',
-                    hintText: 'ej. juanperez',
+                    hintText: 'Supervisor',
                     prefixIcon: const Icon(Icons.person_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     elevation: 2,
                   ),
                   child: const Text(
-                    'INICIAR SESIÓN',
+                    'Entrar',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

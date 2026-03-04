@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     const Color secondaryColor = Color(0xFF4B87D1); // Tono más claro
 
     return MaterialApp(
-      title: 'OpenClaw App',
+      title: 'SuperADMINISTRADOR',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
