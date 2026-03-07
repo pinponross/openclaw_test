@@ -23,6 +23,10 @@ class _ConfigAppScreenState extends State<ConfigAppScreen> {
     'DEIMAN',
   ];
 
+  final List<Map<String, dynamic>> _configItems = [
+    {'title': 'Crear Contraseña', 'icon': Icons.vpn_key},
+  ];
+
   @override
   void dispose() {
     _urlController.dispose();
@@ -143,8 +147,24 @@ class _ConfigAppScreenState extends State<ConfigAppScreen> {
               contentPadding: EdgeInsets.zero,
               activeColor: Theme.of(context).colorScheme.primary,
             ),
-            
-            const Spacer(),
+            const SizedBox(height: 10),
+
+            // ListView de opciones adicionales
+            Expanded(
+              child: ListView.builder(
+                itemCount: _configItems.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: Icon(_configItems[index]['icon'], color: Theme.of(context).colorScheme.primary),
+                    title: Text(_configItems[index]['title']),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () {
+                      // Lógica futura para cada item
+                    },
+                  );
+                },
+              ),
+            ),
             
             // Botones
             Row(
