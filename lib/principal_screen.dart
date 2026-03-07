@@ -45,6 +45,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
             icon: Icon(Icons.inventory),
             label: 'Inventarios',
           ),
+          
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Theme.of(context).colorScheme.primary,
