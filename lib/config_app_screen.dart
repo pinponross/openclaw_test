@@ -10,6 +10,12 @@ class ConfigAppScreen extends StatefulWidget {
 class _ConfigAppScreenState extends State<ConfigAppScreen> {
   final _urlController = TextEditingController();
   bool _rememberGroupAndDb = false;
+  String? _selectedGroup = 'Fierro y Lamina'; // Valor inicial de muestra
+
+  final List<String> _groupOptions = [
+    'Fierro y Lamina',
+    'DEIMAN',
+  ];
 
   @override
   void dispose() {
@@ -49,6 +55,39 @@ class _ConfigAppScreenState extends State<ConfigAppScreen> {
                 fillColor: Colors.grey[50],
               ),
               keyboardType: TextInputType.url,
+            ),
+            const SizedBox(height: 20),
+
+            // Dropdown Grupo de Base de Datos
+            const Text(
+              'Grupo de base de datos',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey),
+            ),
+            const SizedBox(height: 8),
+            DropdownButtonFormField<String>(
+              value: _selectedGroup,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                filled: true,
+                fillColor: Colors.grey[50],
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              ),
+              items: _groupOptions.map((String group) {
+                return DropdownMenuItem<String>(
+                  value: group,
+                  child: Text(group),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedGroup = newValue;
+                });
+              },
+              icon: const Icon(Icons.arrow_drop_down),
+              elevation: 16,
+              style: const TextStyle(color: Colors.black, fontSize: 16),
             ),
             const SizedBox(height: 20),
             
