@@ -18,9 +18,53 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 3) {
+      // Si es el índice del botón "+", mostramos el menú de abajo hacia arriba
+      _showMoreMenu(context);
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  }
+
+  void _showMoreMenu(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.account_balance_wallet),
+                title: const Text('Cuentas por Cobrar'),
+                onTap: () => Navigator.pop(context),
+              ),
+              ListTile(
+                leading: const Icon(Icons.shopping_cart),
+                title: const Text('Compras'),
+                onTap: () => Navigator.pop(context),
+              ),
+              ListTile(
+                leading: const Icon(Icons.precision_manufacturing),
+                title: const Text('Producción'),
+                onTap: () => Navigator.pop(context),
+              ),
+              ListTile(
+                leading: const Icon(Icons.people),
+                title: const Text('CRM'),
+                onTap: () => Navigator.pop(context),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -75,10 +119,15 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
             icon: Icon(Icons.inventory),
             label: 'Inventarios',
           ),
-          
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle_outline),
+            label: 'Más',
+          ),
         ],
+        type: BottomNavigationBarType.fixed, // Asegura que los 4 elementos se vean bien
         currentIndex: _selectedIndex,
         selectedItemColor: Theme.of(context).colorScheme.primary,
+        unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
       ),
     );
