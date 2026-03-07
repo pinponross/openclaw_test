@@ -17,6 +17,12 @@ class _ConfigAppScreenState extends State<ConfigAppScreen> {
     'DEIMAN',
   ];
 
+  String? _selectedDb = 'Fierro y Lamina'; // Valor inicial de muestra para BD
+  final List<String> _dbOptions = [
+    'Fierro y Lamina',
+    'DEIMAN',
+  ];
+
   @override
   void dispose() {
     _urlController.dispose();
@@ -90,7 +96,40 @@ class _ConfigAppScreenState extends State<ConfigAppScreen> {
               style: const TextStyle(color: Colors.black, fontSize: 16),
             ),
             const SizedBox(height: 20),
-            
+
+            // Dropdown Base de Datos
+            const Text(
+              'Base de Datos',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey),
+            ),
+            const SizedBox(height: 8),
+            DropdownButtonFormField<String>(
+              value: _selectedDb,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                filled: true,
+                fillColor: Colors.grey[50],
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              ),
+              items: _dbOptions.map((String db) {
+                return DropdownMenuItem<String>(
+                  value: db,
+                  child: Text(db),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedDb = newValue;
+                });
+              },
+              icon: const Icon(Icons.arrow_drop_down),
+              elevation: 16,
+              style: const TextStyle(color: Colors.black, fontSize: 16),
+            ),
+            const SizedBox(height: 20),
+
             // Checkbox Recordar Último Grupo y BD
             CheckboxListTile(
               title: const Text('Recordar Último Grupo y Base de Datos'),
