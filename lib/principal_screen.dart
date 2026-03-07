@@ -121,7 +121,16 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SuperADMINISTRADOR'),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/logo.png',
+              height: 32, // Tamaño ajustable
+            ),
+            const SizedBox(width: 10),
+            const Text('SuperADMINISTRADOR'),
+          ],
+        ),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
         actions: [
