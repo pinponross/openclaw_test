@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'custom_bottom_navigation.dart';
-import 'home_screen.dart';
-import 'ventas_screen.dart';
-import 'inventarios_screen.dart';
 
 class ComprasScreen extends StatefulWidget {
   const ComprasScreen({super.key});
@@ -17,17 +13,6 @@ class _ComprasScreenState extends State<ComprasScreen> {
     {'title': 'Emitir Comprobantes de Compra', 'icon': Icons.receipt}, // Icono para comprobantes
     {'title': 'Diario de Compras', 'icon': Icons.description}, // Icono semejante a hojas
   ];
-
-  void _onNavigationTap(int index) {
-    Widget target;
-    switch (index) {
-      case 0: target = const HomePrincipalScreen(); break;
-      case 1: target = const VentasScreen(); break;
-      case 2: target = const InventariosScreen(); break;
-      default: return;
-    }
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => target));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +37,6 @@ class _ComprasScreenState extends State<ComprasScreen> {
             },
           );
         },
-      ),
-      bottomNavigationBar: CustomBottomNavigation(
-        currentIndex: 3, // "Más" está activo o representativo
-        onTap: _onNavigationTap,
       ),
     );
   }
