@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:openclaw_test/presentation/screens/ventas/consulta_por_articulo.dart';   
+import 'package:openclaw_test/presentation/screens/ventas/consulta_por_articulo.dart';
+import 'package:openclaw_test/presentation/screens/ventas/firma_de_entrega_screen.dart';
+import 'package:openclaw_test/presentation/screens/ventas/realizar_encuesta_screen.dart';
 import '../ventas/diario_de_ventas_screen.dart';
 
 class VentasScreen extends StatefulWidget {
   const VentasScreen({super.key});
-
-  
 
   @override
   State<VentasScreen> createState() => _VentasScreenState();
@@ -22,14 +22,16 @@ class _VentasScreenState extends State<VentasScreen> {
     {'title': 'Realizar Encuesta', 'icon': Icons.list_alt}, // Hoja con lineas
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: _ventasItems.length,
       itemBuilder: (context, index) {
         return ListTile(
-          leading: Icon(_ventasItems[index]['icon'], color: Theme.of(context).colorScheme.primary),
+          leading: Icon(
+            _ventasItems[index]['icon'],
+            color: Theme.of(context).colorScheme.primary,
+          ),
           title: Text(_ventasItems[index]['title']),
           trailing: const Icon(Icons.chevron_right),
           onTap: () {
@@ -51,6 +53,23 @@ class _VentasScreenState extends State<VentasScreen> {
               );
             }
 
+            if (_ventasItems[index]['title'] == 'Firma de Entrega') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FirmaDeEntregaScreen(),
+                ),
+              );
+            }
+
+             if (_ventasItems[index]['title'] == 'Realizar Encuesta') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RealizarEncuestaScreen(),
+                ),
+              );
+            }
 
 
           },
@@ -58,4 +77,4 @@ class _VentasScreenState extends State<VentasScreen> {
       },
     );
   }
-} 
+}
