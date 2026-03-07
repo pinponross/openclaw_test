@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:openclaw_test/presentation/screens/inventarios/existencias_screen.dart'; 
 
 class InventariosScreen extends StatefulWidget {
   const InventariosScreen({super.key});
@@ -33,6 +34,15 @@ class _InventariosScreenState extends State<InventariosScreen> {
           trailing: const Icon(Icons.chevron_right),
           onTap: () {
             // Lógica futura para cada item de inventarios
+              if (_inventariosItems[index]['title'] == 'Existencias') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExistenciasScreen(),
+                ),
+              );
+            }
+
           },
         );
       },

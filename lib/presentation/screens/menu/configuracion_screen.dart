@@ -1,5 +1,6 @@
 // Lista de items para la pestaña de Configuración
 import 'package:flutter/material.dart';
+import 'package:openclaw_test/presentation/screens/configuracion/crear_contrasena_screen.dart';
 
 final List<Map<String, dynamic>> _configItems = [
   {'title': 'Crear Contraseña', 'icon': Icons.vpn_key},
@@ -28,6 +29,15 @@ class ConfiguracionScreen extends StatelessWidget {
             trailing: const Icon(Icons.chevron_right),
             onTap: () {
               // Lógica futura para cada item de configuración
+
+                if (_configItems[index]['title'] == 'Crear Contraseña') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CrearContrasenaScreen(),
+                ),
+              );
+            }
             },
           );
         },

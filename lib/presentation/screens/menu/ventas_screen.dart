@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';   
+import 'package:flutter/material.dart';
+import 'package:openclaw_test/presentation/screens/ventas/consulta_por_articulo.dart';   
 import '../ventas/diario_de_ventas_screen.dart';
 
 class VentasScreen extends StatefulWidget {
@@ -40,6 +41,18 @@ class _VentasScreenState extends State<VentasScreen> {
                 ),
               );
             }
+
+            if (_ventasItems[index]['title'] == 'Consulta por Articulo') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ConsultaPorArticuloScreen(),
+                ),
+              );
+            }
+
+
+
           },
         );
       },
