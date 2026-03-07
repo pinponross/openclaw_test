@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';   
+import '../ventas/diario_de_ventas_screen.dart';
 
 class VentasScreen extends StatefulWidget {
   const VentasScreen({super.key});
@@ -31,7 +32,14 @@ class _VentasScreenState extends State<VentasScreen> {
           title: Text(_ventasItems[index]['title']),
           trailing: const Icon(Icons.chevron_right),
           onTap: () {
-            // Lógica futura para cada item de ventas
+            if (_ventasItems[index]['title'] == 'Diario de Ventas') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DiarioDeVentasScreen(),
+                ),
+              );
+            }
           },
         );
       },
