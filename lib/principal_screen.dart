@@ -63,7 +63,11 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const CxcScreen()),
-                  ); // Navega a la nueva pantalla
+                  ).then((_) {
+                    setState(() {
+                      _selectedIndex = 0;
+                    });
+                  });
                 },
               ),
               ListTile(
@@ -73,8 +77,14 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                   Navigator.pop(context); // Cierra el menú inferior
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ComprasScreen()),
-                  ); // Navega a la nueva pantalla
+                    MaterialPageRoute(
+                      builder: (context) => const ComprasScreen(),
+                    ),
+                  ).then((_) {
+                    setState(() {
+                      _selectedIndex = 0;
+                    });
+                  });
                 },
               ),
               ListTile(
@@ -84,8 +94,14 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                   Navigator.pop(context); // Cierra el menú inferior
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ProduccionScreen()),
-                  ); // Navega a la nueva pantalla
+                    MaterialPageRoute(
+                      builder: (context) => const ProduccionScreen(),
+                    ),
+                  ).then((_) {
+                    setState(() {
+                      _selectedIndex = 0;
+                    });
+                  });
                 },
               ),
               ListTile(
@@ -96,18 +112,28 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const CrmScreen()),
-                  ); // Navega a la nueva pantalla
+                  ).then((_) {
+                    setState(() {
+                      _selectedIndex = 0;
+                    });
+                  });
                 },
               ),
-               ListTile(
+              ListTile(
                 leading: const Icon(Icons.toggle_off),
                 title: const Text('Configuración'),
                 onTap: () {
                   Navigator.pop(context); // Cierra el menú inferior
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ConfiguracionScreen()),
-                  ); // Navega a la nueva pantalla
+                    MaterialPageRoute(
+                      builder: (context) => const ConfiguracionScreen(),
+                    ),
+                  ).then((_) {
+                    setState(() {
+                      _selectedIndex = 0;
+                    });
+                  });
                 },
               ),
             ],
