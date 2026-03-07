@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'config_app_screen.dart';
+import 'principal_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,9 +27,11 @@ class _LoginScreenState extends State<LoginScreen> {
     
     debugPrint('Intento de inicio de sesión - Usuario: $username');
     
-    // Por ahora, solo mostramos un aviso visual simple
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Iniciando sesión... (Endpoints pendientes)')),
+    // Navegación a la pantalla principal
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const PrincipalScreen(),
+      ),
     );
   }
 
