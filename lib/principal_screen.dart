@@ -29,6 +29,36 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         title: const Text('SuperADMINISTRADOR'),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Confirmar'),
+                    content: const Text('¿Estas seguro de salir de SuperADMINISTRADOR?'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('No'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          // Aquí puedes cerrar la sesión o salir de la app
+                          Navigator.of(context).pop(); // Cierra el diálogo
+                          Navigator.of(context).pop(); // Regresa al login (suponiendo que es la anterior)
+                        },
+                        child: const Text('Sí'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+        ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
