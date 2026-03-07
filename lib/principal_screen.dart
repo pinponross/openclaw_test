@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PrincipalScreen extends StatefulWidget {
   const PrincipalScreen({super.key});
@@ -47,8 +48,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                       TextButton(
                         onPressed: () {
                           // Aquí puedes cerrar la sesión o salir de la app
-                          Navigator.of(context).pop(); // Cierra el diálogo
-                          Navigator.of(context).pop(); // Regresa al login (suponiendo que es la anterior)
+                          SystemNavigator.pop(); // Sale de la aplicación
                         },
                         child: const Text('Sí'),
                       ),
