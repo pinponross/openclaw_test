@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:openclaw_test/presentation/screens/menu/compras_screen.dart';
+import 'package:openclaw_test/presentation/screens/menu/configuracion_screen.dart';
+import 'package:openclaw_test/presentation/screens/menu/crm_screen.dart';
+import 'package:openclaw_test/presentation/screens/menu/cxc_screen.dart';
+import 'package:openclaw_test/presentation/screens/menu/home_screen.dart';
+import 'package:openclaw_test/presentation/screens/menu/inventarios_screen.dart';
+import 'package:openclaw_test/presentation/screens/menu/produccion_screen.dart';
+import 'package:openclaw_test/presentation/screens/menu/ventas_screen.dart';
 
 class PrincipalScreen extends StatefulWidget {
   const PrincipalScreen({super.key});
@@ -11,37 +19,18 @@ class PrincipalScreen extends StatefulWidget {
 class _PrincipalScreenState extends State<PrincipalScreen> {
   int _selectedIndex = 0;
 
-  final List<Map<String, dynamic>> _configItems = [
-    {'title': 'Crear Contraseña', 'icon': Icons.vpn_key},
-  ];
-
   late final List<Widget> _widgetOptions;
 
   @override
   void initState() {
     super.initState();
     _widgetOptions = <Widget>[
-      _buildConfigTab(),
-      const Center(child: Text('Pantalla de Ventas', style: TextStyle(fontSize: 24))),
-      const Center(child: Text('Pantalla de Inventarios', style: TextStyle(fontSize: 24))),
+      HomePrincipalScreen(),
+      VentasScreen(), // Reemplazado por el ListView de Ventas
+      InventariosScreen(), // Reemplazado por el ListView de Inventarios
     ];
   }
 
-  Widget _buildConfigTab() {
-    return ListView.builder(
-      itemCount: _configItems.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: Icon(_configItems[index]['icon'], color: Theme.of(context).colorScheme.primary),
-          title: Text(_configItems[index]['title']),
-          trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // Lógica futura para cada item
-          },
-        );
-      },
-    );
-  }
 
   void _onItemTapped(int index) {
     if (index == 3) {
@@ -69,22 +58,57 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
               ListTile(
                 leading: const Icon(Icons.account_balance_wallet),
                 title: const Text('Cuentas por Cobrar'),
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context); // Cierra el menú inferior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CxcScreen()),
+                  ); // Navega a la nueva pantalla
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.shopping_cart),
                 title: const Text('Compras'),
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context); // Cierra el menú inferior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ComprasScreen()),
+                  ); // Navega a la nueva pantalla
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.precision_manufacturing),
                 title: const Text('Producción'),
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context); // Cierra el menú inferior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ProduccionScreen()),
+                  ); // Navega a la nueva pantalla
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.people),
                 title: const Text('CRM'),
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context); // Cierra el menú inferior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CrmScreen()),
+                  ); // Navega a la nueva pantalla
+                },
+              ),
+               ListTile(
+                leading: const Icon(Icons.toggle_off),
+                title: const Text('Configuración'),
+                onTap: () {
+                  Navigator.pop(context); // Cierra el menú inferior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ConfiguracionScreen()),
+                  ); // Navega a la nueva pantalla
+                },
               ),
             ],
           ),
@@ -109,7 +133,9 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     title: const Text('Confirmar'),
-                    content: const Text('¿Estas seguro de salir de SuperADMINISTRADOR?'),
+                    content: const Text(
+                      '¿Estas seguro de salir de SuperADMINISTRADOR?',
+                    ),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.of(context).pop(),
@@ -134,13 +160,10 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Configuración',
+            icon: Icon(Icons.home),
+            label: 'Inicio',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sell),
-            label: 'Ventas',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.sell), label: 'Ventas'),
           BottomNavigationBarItem(
             icon: Icon(Icons.inventory),
             label: 'Inventarios',
@@ -150,7 +173,8 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
             label: 'Más',
           ),
         ],
-        type: BottomNavigationBarType.fixed, // Asegura que los 4 elementos se vean bien
+        type: BottomNavigationBarType
+            .fixed, // Asegura que los 4 elementos se vean bien
         currentIndex: _selectedIndex,
         selectedItemColor: Theme.of(context).colorScheme.primary,
         unselectedItemColor: Colors.grey,
