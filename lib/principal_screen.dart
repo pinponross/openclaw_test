@@ -11,11 +11,37 @@ class PrincipalScreen extends StatefulWidget {
 class _PrincipalScreenState extends State<PrincipalScreen> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Center(child: Text('Pantalla de Configuración', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Pantalla de Ventas', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Pantalla de Inventarios', style: TextStyle(fontSize: 24))),
+  final List<Map<String, dynamic>> _configItems = [
+    {'title': 'Crear Contraseña', 'icon': Icons.vpn_key},
   ];
+
+  late final List<Widget> _widgetOptions;
+
+  @override
+  void initState() {
+    super.initState();
+    _widgetOptions = <Widget>[
+      _buildConfigTab(),
+      const Center(child: Text('Pantalla de Ventas', style: TextStyle(fontSize: 24))),
+      const Center(child: Text('Pantalla de Inventarios', style: TextStyle(fontSize: 24))),
+    ];
+  }
+
+  Widget _buildConfigTab() {
+    return ListView.builder(
+      itemCount: _configItems.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          leading: Icon(_configItems[index]['icon'], color: Theme.of(context).colorScheme.primary),
+          title: Text(_configItems[index]['title']),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () {
+            // Lógica futura para cada item
+          },
+        );
+      },
+    );
+  }
 
   void _onItemTapped(int index) {
     if (index == 3) {
