@@ -11,7 +11,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Center(child: Text('Pantalla de Configuracio', style: TextStyle(fontSize: 24))),
+    Center(child: Text('Pantalla de Configuración', style: TextStyle(fontSize: 24))),
     Center(child: Text('Pantalla de Ventas', style: TextStyle(fontSize: 24))),
     Center(child: Text('Pantalla de Inventarios', style: TextStyle(fontSize: 24))),
   ];
@@ -35,7 +35,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Configuracio',
+            label: 'Configuración',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.sell),
