@@ -121,7 +121,9 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               'assets/logo.png',
