@@ -122,17 +122,14 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/logo.png',
-              height: 32, // Tamaño ajustable
-            ),
-            const SizedBox(width: 10),
-            const Text('SuperADMINISTRADOR'),
-          ],
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Image.asset(
+            'assets/logo.png',
+          ),
         ),
+        leadingWidth: 44,
+        title: const Text('SuperADMINISTRADOR'),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
         actions: [
